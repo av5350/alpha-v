@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1016357828453",
+    "project_id": "alpha-v",
+    "storage_bucket": "alpha-v.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016357828453:android:cb1295f28be533298c938c",
+        "android_client_info": {
+          "package_name": "com.example.alpha_v"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1016357828453-omv6f9bo6ql0jau0eck7tgrbffsh7qdu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6XjhtzNtk9dJOevnOrkLec0LZ2GxjLWI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1016357828453-omv6f9bo6ql0jau0eck7tgrbffsh7qdu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
