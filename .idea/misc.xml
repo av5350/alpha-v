@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/android_projects/alphav/app/src/main/res/layout/activity_calendar.xml" value="0.1921875" />
+        <entry key="..\:/android_projects/alphav/app/src/main/res/layout/activity_camera.xml" value="0.1921875" />
+        <entry key="..\:/android_projects/alphav/app/src/main/res/layout/activity_gallery.xml" value="0.1921875" />
         <entry key="..\:/android_projects/alphav/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/android_projects/alphav/app/src/main/res/layout/activity_upload_file.xml" value="0.1921875" />
+        <entry key="..\:/android_projects/alphav/app/src/main/res/menu/main.xml" value="0.1921875" />
       </map>
     </option>
   </component>

@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -49,10 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseApp.initializeApp(this); // ??????????????????????????????????
 
-        SharedPreferences signInState = getSharedPreferences("Sign_In_State",MODE_PRIVATE);
+        SharedPreferences signInState = getSharedPreferences("Sign_In_State", MODE_PRIVATE);
 
-        if (signInState.getBoolean("isMailSent",false))
-        {
+        if (signInState.getBoolean("isMailSent", false)) {
             Intent intent = getIntent();
             String emailLink = intent.getData().toString();
 
@@ -71,9 +72,7 @@ public class MainActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     final Gson gson = new Gson();
                                     linkMailPhone(gson.fromJson(signInState.getString("credential", ""), PhoneAuthCredential.class));
-                                }
-                                else
-                                {
+                                } else {
                                     Toast.makeText(MainActivity.this, "error in isSignInWithEmailLink", Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -102,8 +101,7 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
-    public void linkMailPhone(PhoneAuthCredential credential)
-    {
+    public void linkMailPhone(PhoneAuthCredential credential) {
         FBref.auth.getCurrentUser().linkWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -111,9 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
                             Toast.makeText(MainActivity.this, "LASTTTTTTT", Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        {
+                        } else {
                             Toast.makeText(MainActivity.this, "There was an error", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -157,19 +153,18 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(MainActivity.this, "Email sent", Toast.LENGTH_SHORT).show();
 
-                            SharedPreferences signInState = getSharedPreferences("Sign_In_State",MODE_PRIVATE);
+                            SharedPreferences signInState = getSharedPreferences("Sign_In_State", MODE_PRIVATE);
                             SharedPreferences.Editor editor = signInState.edit();
-                            editor.putBoolean("isMailSent",true);
+                            editor.putBoolean("isMailSent", true);
                             editor.putString("mail", mailET.getText().toString());
 
                             // save the current user credential
                             final Gson gson = new Gson();
                             String serializedObject = gson.toJson(credential);
-                            editor.putString("credential",serializedObject);
+                            editor.putString("credential", serializedObject);
 
                             editor.commit();
-                        }
-                        else {
+                        } else {
                             Toast.makeText(MainActivity.this, "Email wasnt sent :( !!!!!!", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -206,5 +201,38 @@ public class MainActivity extends AppCompatActivity {
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(storedVerificationId, codeET.getText().toString());
         //PhoneAuthCredential credential = PhoneAuthProvider.getCredential(storedVerificationId, "123456");
         signInWithPhoneAuthCredential(credential);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.gallery) {
+            Intent si = new Intent(this, GalleryActivity.class);
+            startActivity(si);
+        }
+        else if (id == R.id.camera)
+        {
+            Intent si = new Intent(this, CameraActivity.class);
+            startActivity(si);
+        }
+        else if (id == R.id.uploadFile)
+        {
+            Intent si = new Intent(this, UploadFileActivity.class);
+            startActivity(si);
+        }
+        else if (id == R.id.calendar)
+        {
+            Intent si = new Intent(this, CalendarActivity.class);
+            startActivity(si);
+        }
+
+        return true;
     }
 }
