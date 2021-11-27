@@ -86,6 +86,8 @@ public class CalendarActivity extends AppCompatActivity {
         intent.putExtra(CalendarContract.Events.DTSTART, selectedHour);
         intent.putExtra(Intent.EXTRA_EMAIL, emailET.getText().toString());
 
+        // todo: whats about the minutes???? just hours????
+
         if (intent.resolveActivity(getPackageManager()) != null){
             Intent intent1 = Intent.createChooser(intent, "Open using");
             startActivity(intent1);

@@ -70,8 +70,7 @@ public class UploadFileActivity extends AppCompatActivity {
 
             Toast.makeText(UploadFileActivity.this, "good - csv", Toast.LENGTH_SHORT).show();
             uploadToFirebase(Uri.fromFile(file));
-            //file.delete(); todo: how to delete the file at the end???
-            // todo: minSDK = 26, its good? or its has to be lower?
+            //file.delete(); todo: how to delete the file at the end??? api 26
 
         } catch (IOException e) {
             Toast.makeText(UploadFileActivity.this, "bad - csv", Toast.LENGTH_SHORT).show();
